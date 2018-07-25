@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books Home</title>
+</head>
+<style>
+  div {
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+  }
+  #indent{
+    margin-left: 20px;
+    width: 350px;
+  }
+</style>
+<body>
+    <a href="/books/clear">Logout</a>
+    <a href="/books/add">Add Book and Review</a>
+    <h1>Welcome {{request.session.name}}</h1>
+    <div>
+        <H3>Recent Book Reviews:</H3>
+    
+        {% for x in another %}
+        <a href="/books/{{x.books.id}}">{{x.books.title}}</a> <br>
+        <div id="indent">
+            <a href="/books/user/{{x.user.id}}">{{x.user.name}}</a> says: {{x.review}} <br> <br>
+        </div>
+        {% endfor %}
+    </div> 
+    <div>
+        <h3>Other Books with Reviews</h3>
+        {% for x in another %}
+        <a href="/books/{{x.books.id}}">{{x.books.title}}</a> <br>
+        {% endfor %}
+    </div>
+
+</html>

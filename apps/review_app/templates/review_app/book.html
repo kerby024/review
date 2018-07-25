@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    <a href="/">Logout</a>
+    <a href="/books">Home</a>
+    <h1>{{check.title}}</h1>
+    <h3>Author: {{check.author}}</h3>
+    <h1>Reviews</h1>
+    {% for x in reviews %}
+        <a href="/books/{{x.user.id}}">{{x.user.name}}</a> says: {{x.review}}</p>
+    {% endfor %}
+    <form action="/books/{{x.book.id}}/update" method="post">
+        {% csrf_token %}
+    <h4>Add a Reviews</h4> <br>
+    <textarea name="newreview" id="" cols="30" rows="5"></textarea><br>
+    <input type="submit" value="Submit Review">
+    </form>
+</body>
+</html>

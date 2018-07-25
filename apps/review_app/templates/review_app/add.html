@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Book and Review</title>
+    <style>
+        a {
+            margin-right: 15px;
+            float: right;
+        }
+        h4, p {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/books/clear">Logout</a>
+    <a href="/books">Home</a>
+    <h3>Add a New Book Title and a Review</h3>
+    <form action="/books/processing" method="post">
+        {% csrf_token %}
+        <h4>Book Title:</h4> <input type="text" name="title" id=""> <br>
+        <h4>Author:</h4> <br>
+            <p>Choose from the list:</p> <select name="author" id="">
+                                            {% for x in reviews %}
+                                            <option value="{{x.author}}">{{x.author}}</option>
+                                            {% endfor %}
+                                        </select> <br>
+            <p>Or add a new author:</p> <input type="text" name="custom_author" id=""><br>
+        <h4>Review:</h4> <br><textarea name="review" id="" cols="30" rows="5"></textarea><br>
+        <br>
+        <input type="submit" value="Add Book and Review">
+    </form>
+</body>
+</html>
+
